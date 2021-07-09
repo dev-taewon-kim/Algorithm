@@ -9,4 +9,6 @@ input = stdin.readline
 
 n = int(input())
 
-print((n * (n + 1)) // 2)
+arr = list(map(int, input().split()))
+min_value, max_value = min(arr), max(arr)
+print(min_value, max_value)
