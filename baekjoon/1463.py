@@ -9,22 +9,16 @@ input = stdin.readline
 
 n = int(input())
 
-dic = {}
+arr = [0, 0, 1, 1] # 0부터 3까지 각각 1로 만들기 위한 연산의 횟수
 
-for i in range(1, (10 ** 6) - 1):
-    num = i
-    count = 0
+for i in range(4, n + 1):
+    arr.append(arr[i - 1] + 1)
 
-    while num != 1:
-        # 여기에 딕셔너리 검색 로직 넣기
-        if num % 3 == 0:
-            num //= 3
-        elif num % 2 == 0:
-            num //= 2
-        else:
-            num -= 1
-        count += 1
+    if i % 3 == 0 and (arr[i//3] + 1 < arr[i]):
+        arr[i] = arr[i//3] + 1
+    if i % 2 == 0 and (arr[i//2] + 1 < arr[i]):
+        arr[i] = arr[i//2] + 1
     
-    dict[num: count]
+    # min(arr[i - 1] + 1, arr[i//2] + 1, arr[i//3] + 1)
 
-print(count)
+print(arr[n])
