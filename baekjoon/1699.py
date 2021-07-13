@@ -4,22 +4,17 @@
 
 from sys import stdin
 import math
-from itertools import product
 
 # 입력 빠르게 받기
 input = stdin.readline
 
 n = int(input())
-cnt = 0
-result = 0
 
-square_numbers = [i ** 2 for i in range(1, int(math.sqrt(n)) + 1)]
+arr = [i for i in range(n + 1)]
 
-while not result:
-    cnt += 1
-    for x in product(square_numbers, repeat=cnt):
-        if sum(x) == n:
-            result = cnt
-            break
+for i in range(2, n + 1):
+    for j in range(1, int(math.sqrt(i)) + 1):
+        if arr[i - (j * j)] + 1 < arr[i]:
+            arr[i] = arr[i - (j * j)] + 1
 
-print(cnt)
+print(arr[n])
