@@ -18,8 +18,11 @@ if arr[0] == 0:
 dp[0], dp[1] = 1, 1
 
 for i in range(2, n + 1):
-    if (1 <= arr[i - 1] <= 9):
-        dp[i] += dp[i - 1]
+    if not (arr[i - 2] + arr[i - 1]):
+        break
+    
+    if (arr[i - 1]):
+        dp[i] = dp[i - 1]
 
     double_digits = (arr[i - 2] * 10) + arr[i - 1]
 
